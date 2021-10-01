@@ -10,30 +10,33 @@
 
 <body <?php body_class(); ?>>
 
-<!-- Navigation Menu -->
-<nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
-                <?php
-                        $custom_logo_id = get_theme_mod('custom_logo');
-                        $image = wp_get_attachment_image_src($custom_logo_id, 'full');
-                        ?>
+    <!-- Navigation Menu -->
+    <nav class="menu-wrapper">
+        <div class="page-container">
+            <?php
+                $custom_logo_id = get_theme_mod('custom_logo');
+                $image = wp_get_attachment_image_src($custom_logo_id, 'full');
+            ?>
 
-                <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
-                    <img src="<?= $image[0]; ?>" class="img-fluid" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <a class="menu__logo" href="<?php echo esc_url(home_url('/')); ?>">
+                <img src="<?= $image[0]; ?>" class="img-fluid" alt="">
+            </a>
 
-                <!-- The WordPress Primary Menu -->
-                <?php wp_nav_menu(
-                            array(
-                                'theme_location'    => 'primary',
-                                'menu_class'        => 'navbar-nav ml-auto w-100 justify-content-end',
-                                'container_class'  => 'collapse navbar-collapse',
-                                'container_id'    => 'navbarNav',
-                            )
-                        ); ?>
+            <!-- The WordPress Primary Menu -->
+            <?php wp_nav_menu(
+                array(
+                    'theme_location'    => 'primary',
+                    'menu_class'        => 'menu',
+                    'container'  => false,
+                    'container_id'    => '',
+                )
+            ); ?>
+
+            <div class="menu__toggler">
+                <div class="toggler__line toggler__line--top"></div>
+                <div class="toggler__line toggler__line--middle"></div>
+                <div class="toggler__line toggler__line--bottom"></div>
             </div>
-        </nav>
+
+        </div>
+    </nav>
